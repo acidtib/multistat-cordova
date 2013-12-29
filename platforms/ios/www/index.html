@@ -56,11 +56,11 @@
 
                 <li class="text small" style="text-align: center;">
                     You can find your API Key under the Account tab on multipool.us <br>
-
-                    <div class="api_key_here"></div>
                 </li>
                 
             </ul>
+
+            <button class="anchor margin-bottom destroy-key"><abbr>Remove APi Key</abbr></button>
 
             <div style="display: none;">
                 <div class="layout horizontal">
@@ -90,6 +90,7 @@
             console.log('we dont have a key');
 
             $('.left_nav').hide();
+            $('.destroy-key').hide();
 
             //$.ajax({
             //    url:"http://192.168.1.100:8888/?api_key="+localStorage.getItem("local_api_key"),
@@ -125,10 +126,15 @@
             var api_key = $( ".api_key_field" ).val();
             localStorage.local_api_key=api_key;
             
-            $(".api_key_here").html("The Key: " + localStorage.local_api_key);
+            //$(".api_key_here").html("The Key: " + localStorage.local_api_key);
 
             location.reload();
             
+        });
+
+        $(".destroy-key").click(function () {
+            localStorage.removeItem('local_api_key');
+            location.reload();
         });
 
         Lungo.init({
