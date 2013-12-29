@@ -46,7 +46,7 @@ var app = {
 
             $('.ok-im-in').hide();
 
-            $("#main-user").toggleClass('active splash');
+            $("#main-user").toggleClass('active splash scroll');
 
         } else { //we have a key baby
 
