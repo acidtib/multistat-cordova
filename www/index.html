@@ -17,7 +17,8 @@
 <body>
 
     <section id="main" data-transition="slide" data-aside="features" class="drag">
-        <header style="padding-top: 13px; height: 58px;">
+        
+        <header style="padding-top: 13px; height: 58px;" class="main_head">
             <nav class="left_nav">
                 <a href="#" data-view-aside="features" data-icon="menu"></a>
             </nav>
@@ -38,111 +39,36 @@
             <a href="#" data-view-article="list-examples" data-label="Examples"></a>
         </nav>
 
-        <article id="main-article" class="list indenteds scroll">
-            <ul class="no_key_here">
+        <article id="main-user" class="indenteds">
+            
+            <div class="let-me-in">
+                <img src="img/logo.png" class="logo" style="margin: 18% 0 13.5% 0;" />
                 
-                <li style="margin-top: 86px;">
-                    <strong class="text bold" style="text-align: center; margin: 0px 0px 7px 0px;">Enter Your API Key Below</strong>
-                    <div class="form">
-                        <fieldset>
-                            <input type="text" placeholder="API Key" class="large text bold align_center api_key_field">
-
-                            <br>
-
-                            <button class="anchor margin-bottom lets-go"><abbr>Lets Go</abbr></button>
-                        </fieldset>
-                    </div>
-                </li>
-
-                <li class="text small" style="text-align: center;">
-                    You can find your API Key under the Account tab on multipool.us <br>
-                </li>
-                
-            </ul>
-
-            <button class="anchor margin-bottom destroy-key"><abbr>Remove APi Key</abbr></button>
-
-            <div style="display: none;">
-                <div class="layout horizontal">
-                    <div data-layout="secondary">
-                        <img src="http://cdn.tapquo.com/lungo/icon-144.png" class="icon" style="width: 30px;">
-                    
-                    </div>
-                    <div data-layout="secondary">
-                        trc
-                    </div>
+                <div class="form">
+                    <fieldset class="radius-bottom shadow" data-icon="lock">
+                        <input type="text" placeholder="API Key" id="txt-signup-password" value="" class="api_key_field">
+                    </fieldset>
+                    <br/>
+                    <button class="anchor lets-go" data-label="Lets Go"></button>
                 </div>
+            </div>
+
+            <div class="ok-im-in">
+                <button class="anchor margin-bottom destroy-key"><abbr>Remove APi Key</abbr></button>
             </div>
 
         </article>
 
     </section>
 
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/quo.js"></script>
     <script type="text/javascript" src="js/lungo.js"></script>
-    <script type="text/javascript" src="js/pace.min.js"></script>
     <script type="text/javascript">
 
-        //check if we have an api key saved
-        if (localStorage.getItem("local_api_key") === null) {
-            console.log('we dont have a key');
-
-            $('.left_nav').hide();
-            $('.destroy-key').hide();
-
-            //$.ajax({
-            //    url:"http://192.168.1.100:8888/?api_key="+localStorage.getItem("local_api_key"),
-            //    type:'GET',
-            //    dataType:'json',
-                
-            //    success: function (data) {
-                    
-            //    }
-                
-            //});
-
-        } else { //we have key baby
-
-            $('.no_key_here').hide();
-            
-            $.ajax({
-                url:"http://162.243.249.147/api.php?api_key="+localStorage.getItem("local_api_key"),
-                type:'GET',
-                dataType:'json',
-                
-                success: function (data) {
-                    $.each(data.currency, function(index, element) {
-                        $('.dame_currency').append('<li class="thumb"><img src="img/crypto/'+element.currency+'.png"><div><strong>'+element.currency+'</strong><span class="text small">'+element.confirmed_rewards+'</span></div><li>');
-                    });
-                }
-                
-            });
-
-        }
-
-        $(".lets-go").click(function () { 
-            var api_key = $( ".api_key_field" ).val();
-            localStorage.local_api_key=api_key;
-            
-            //$(".api_key_here").html("The Key: " + localStorage.local_api_key);
-
-            location.reload();
-            
-        });
-
-        $(".destroy-key").click(function () {
-            localStorage.removeItem('local_api_key');
-            location.reload();
-        });
-
-        Lungo.init({
-            name: 'MultiStat',
-            resources: [
-                'sides/features.html']
-        });
-
+        app.initialize();
         
     </script>
 

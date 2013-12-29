@@ -37,13 +37,44 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        //check if we have an api key saved
+        if (localStorage.getItem("local_api_key") === null) {
 
-        console.log('Received Event: ' + id);
+            $('.left_nav').hide(); //hide left slide
+            $('.main_head').hide(); //hide top nav
+
+            $('.ok-im-in').hide();
+
+            $("#main-user").toggleClass('active splash');
+
+        } else { //we have a key baby
+
+            $('.let-me-in').hide();
+
+        }
+
+        // save api key
+        $(".lets-go").click(function () { 
+            var api_key = $( ".api_key_field" ).val();
+            localStorage.local_api_key=api_key;
+            
+            //$(".api_key_here").html("The Key: " + localStorage.local_api_key);
+
+            location.reload();
+            
+        });
+
+        // destroy api key
+        $(".destroy-key").click(function () {
+            localStorage.removeItem('local_api_key');
+            location.reload();
+        });
+
+        Lungo.init({
+            name: 'MultiStat',
+            resources: [
+                'sides/features.html']
+        });
     }
 };
