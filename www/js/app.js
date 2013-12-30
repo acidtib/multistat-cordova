@@ -41,6 +41,8 @@ var app = {
         //check if we have an api key saved
         if (localStorage.getItem("local_api_key") === null) {
 
+            $('.in_user_nav').hide();
+
             $('.left_nav').hide(); //hide left slide
             $('.main_head').hide(); //hide top nav
 
@@ -52,6 +54,17 @@ var app = {
 
             $('.let-me-in').hide();
 
+            //$.ajax({
+            //    url:"http://162.243.249.147/api.php?api_key="+localStorage.getItem("local_api_key"),
+            //    type:'GET',
+            //    dataType:'json',
+            //    success: function (data) {
+            //        $.each(data.currency, function(index, element) {
+            //            $('.dame_currency').append('<li class="thumb"><img src="img/crypto/'+element.currency+'.png"><div><strong>'+element.currency+'</strong><span class="text small">'+element.confirmed_rewards+'</span></div></li>');
+            //        });
+            //    }
+            //});
+
         }
 
         // save api key
@@ -59,8 +72,6 @@ var app = {
             var api_key = $( ".api_key_field" ).val();
             localStorage.local_api_key=api_key;
             
-            //$(".api_key_here").html("The Key: " + localStorage.local_api_key);
-
             location.reload();
             
         });
