@@ -22,6 +22,10 @@
     <description>
         A simple stats app for the alternate cryto-currency mining site Multipool.us
     </description>
+    <name>MultiStat</name>
+    <description>
+        A simple stats app for the alternate cryto-currency mining site Multipool.us
+    </description>
     <author email="dan@ianalyst.com" href="http://ianalyst.com">
         iAnalyst Ninjas
     </author>
