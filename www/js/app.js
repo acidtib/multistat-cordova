@@ -55,13 +55,16 @@ var app = {
             $('.let-me-in').hide();
 
             $.ajax({
-                url:"http://162.243.249.147/api.php?api_key="+localStorage.getItem("local_api_key"),
+                url:"http://162.243.249.147/api/stat.php?api_key="+localStorage.getItem("local_api_key"),
                 type:'GET',
                 dataType:'json',
                 success: function (data) {
                     $.each(data.currency, function(index, element) {
                         $('.dame_currency').append('<li class="thumb"><img src="img/crypto/'+element.currency+'.png"><div><strong>'+element.currency+'</strong><span class="text small">'+element.confirmed_rewards+'</span></div></li>');
                     });
+
+                    $('.are-we-mining-scrypt').html(data.mining.scrypt);
+                    $('.are-we-mining-sha').html(data.mining.sha_256);
                 }
             });
 
