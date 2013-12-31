@@ -63,6 +63,10 @@ var app = {
                         $('.dame_currency').append('<li class="thumb"><img src="img/crypto/'+element.currency+'.png"><div><strong>'+element.currency+'</strong><span class="text small">'+element.confirmed_rewards+'</span></div></li>');
                     });
 
+                    $.each(data.workers, function(index, worker) {
+                        $('.give_me_some_workers').append('<li class="accept"><strong>'+worker.coin+' - <span style="text-transform:lowercase;">'+worker.worker+'</span></strong><small style="text-transform:lowercase;">hashrate: '+worker.hashrate+'</small></li>');
+                    });
+
                     $('.are-we-mining-scrypt').html(data.mining.scrypt);
                     $('.are-we-mining-sha').html(data.mining.sha_256);
                 }
