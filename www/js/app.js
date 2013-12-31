@@ -89,6 +89,10 @@ var app = {
             location.reload();
         });
 
+        $(".reload-this-bitch").click(function () {
+            location.reload();
+        });
+
         Lungo.init({
             name: 'MultiStat',
             resources: [
