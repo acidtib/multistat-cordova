@@ -72,6 +72,8 @@ var app = {
                 }
             });
 
+            
+
         }
 
         // save api key
@@ -98,5 +100,20 @@ var app = {
             resources: [
                 'sides/features.html']
         });
+
+
+        var pull_example = new Lungo.Element.Pull('#main-user', {
+            onPull: "Pull down to refresh",      //Text on pulling
+            onRelease: "Release to get new data",//Text on releasing
+            onRefresh: "Refreshing...",          //Text on refreshing
+            callback: function() {               //Action on refresh
+                
+                location.reload();
+                
+                pull_example.hide();
+            }
+        });
+
+
     }
 };

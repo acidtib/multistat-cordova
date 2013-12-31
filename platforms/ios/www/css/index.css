@@ -132,3 +132,7 @@ h1 {
 .are-we-mining-scrypt, .are-we-mining-sha {
     font-size: 37px;
 }
+
+body > section > [data-control="pull"] {
+    margin: 50px 0px 0px 0px;
+}
