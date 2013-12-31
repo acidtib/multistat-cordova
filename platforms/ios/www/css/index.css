@@ -128,3 +128,7 @@ h1 {
     width: 44%;
     margin: 10px;
 }
+
+.are-we-mining-scrypt, .are-we-mining-sha {
+    font-size: 37px;
+}
